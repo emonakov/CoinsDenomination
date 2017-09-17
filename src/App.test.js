@@ -16,7 +16,9 @@ it('returns valid change numbers', (done) => {
 it('returns invalid response', (done) => {
   const promise = CoinsCalculator('£1p');
   promise.catch((e) => {
-    done(e);
+    if (e.name === 'NotValidError') {
+      done(e);
+    }
   });
 });
 it('returns £2 x 32 coins', (done) => {
